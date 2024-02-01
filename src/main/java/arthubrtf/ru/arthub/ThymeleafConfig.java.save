@@ -1,4 +1,3 @@
-package arthubrtf.ru.arthub;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
@@ -7,8 +6,6 @@ import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
@@ -17,13 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableJpaAuditing
-public class ThymeleafConfig implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("*") // Разрешить все источники
-                .allowedMethods("GET", "POST", "PUT", "DELETE"); // Разрешить определенные методы
-    }
+public class ThymeleafConfig {
 
     @Bean
     public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
@@ -53,7 +44,6 @@ public class ThymeleafConfig implements WebMvcConfigurer {
 
 
 }
-
 
 
 

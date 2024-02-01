@@ -31,7 +31,7 @@ public class Programs {
     private String examples;
     private String site;
 
-    public Programs(String name, String link, String systems, String description, String pluses, String minuses, String site) {
+    public Programs(String name, String link, String description, String systems, String pluses, String minuses, String site) {
         this.name = name;
         this.link = link;
         this.systems = systems;
