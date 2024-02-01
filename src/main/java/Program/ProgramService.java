@@ -53,7 +53,8 @@ public class ProgramService {
                     String[] minuses = program.getMinuses().split("\\R");
                     String[] pluses = program.getPluses().split("\\R");
                     String[] systems = program.getSystems().split(" ");
-                    return new FullProdDTO(program.getName(), program.getLink(), program.getDescription(), systems, minuses, pluses, program.getSite());
+                    String[] examples = program.getExamples().split(" ");
+                    return new FullProdDTO(program.getName(), program.getLink(), program.getDescription(), systems, minuses, pluses, program.getSite(), program.getLogo(), examples);
                 })
                 .filter(program -> program.getName().toLowerCase().contains(decodedName.toLowerCase()))
                 .findFirst();

@@ -4,7 +4,7 @@ public class FullProdDTO {
 
     private String name;
 
-    public FullProdDTO(String name, String link, String description, String[] systems, String[] pluses, String[] minuses, String site) {
+    public FullProdDTO(String name, String link, String description, String[] systems, String[] pluses, String[] minuses, String site, String logo, String[] examples) {
         this.name = name;
         this.link = link;
         this.description = description;
@@ -12,6 +12,8 @@ public class FullProdDTO {
         this.pluses = pluses;
         this.minuses = minuses;
         this.site = site;
+        this.logo = logo;
+        this.examples = examples;
     }
 
     private String link;
@@ -19,6 +21,9 @@ public class FullProdDTO {
     private String[] systems;
     private String[] pluses;
     private String[] minuses;
+    private String[] examples;
+
+    private String logo;
     private String site;
 
     public void setName(String name) {
