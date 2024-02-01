@@ -4,7 +4,7 @@ public class FullProdDTO {
 
     private String name;
 
-    public FullProdDTO(String name, String link, String description, String systems, String[] pluses, String[] minuses, String site) {
+    public FullProdDTO(String name, String link, String description, String[] systems, String[] pluses, String[] minuses, String site) {
         this.name = name;
         this.link = link;
         this.description = description;
@@ -16,7 +16,7 @@ public class FullProdDTO {
 
     private String link;
     private String description;
-    private String systems;
+    private String[] systems;
     private String[] pluses;
     private String[] minuses;
     private String site;
@@ -33,7 +33,7 @@ public class FullProdDTO {
         this.description = description;
     }
 
-    public void setSystems(String systems) {
+    public void setSystems(String[] systems) {
         this.systems = systems;
     }
 
@@ -61,7 +61,7 @@ public class FullProdDTO {
         return description;
     }
 
-    public String getSystems() {
+    public String[] getSystems() {
         return systems;
     }
 
