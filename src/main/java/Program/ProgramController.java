@@ -81,7 +81,7 @@ public class ProgramController {
     }
 
     @GetMapping("{program}")
-    public ResponseEntity<Optional<Programs>> showProgram(@PathVariable("program") String program) {
+    public ResponseEntity<Optional<?>> showProgram(@PathVariable("program") String program) {
         return new ResponseEntity<>(programService.showProgram(program), HttpStatus.OK);
     }
 }

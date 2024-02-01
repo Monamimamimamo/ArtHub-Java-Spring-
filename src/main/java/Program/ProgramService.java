@@ -44,12 +44,19 @@ public class ProgramService {
     }
 
 
-    public Optional<Programs> showProgram(String name) {
+    public Optional<?> showProgram(String name) {
         String decodedName = UriUtils.decode(name, StandardCharsets.UTF_8);
         return StreamSupport.stream(programsRepo.findAll().spliterator(), false)
+                .map(program -> {
+                    String[] minuses = program.getMinuses().split("\\R");
+                    String[] pluses = program.getPluses().split("\\R");
+                    return new FullProdDTO(program.getName(), program.getLink(), program.getDescription(), program.getSystems(), minuses, pluses, program.getSite());
+                })
                 .filter(program -> program.getName().toLowerCase().contains(decodedName.toLowerCase()))
                 .findFirst();
     }
+
+
 
     public CreateResult createProgram(ProgramParams params, MultipartFile[] files) {
         Programs program = new Programs(params.getName(), params.getLink(), params.getDescription(), params.getSystems(), params.getPluses(), params.getMinuses(), params.getSite());
