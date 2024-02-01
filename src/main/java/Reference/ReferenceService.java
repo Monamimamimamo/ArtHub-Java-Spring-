@@ -168,7 +168,7 @@ public class ReferenceService {
                     Map<String, Object> map = new HashMap<>();
                     map.put("id", reference.getId());
                     map.put("title", reference.getTitle());
-                    map.put("description", reference.getHashtag());
+                    map.put("hashtag", reference.getHashtag());
                     map.put("image", reference.getImage());
                     map.put("favorite", isFavorite);
                     return map;
