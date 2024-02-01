@@ -52,6 +52,7 @@ public class ProgramService {
                 .map(program -> {
                     String[] minuses = program.getMinuses().split("\\R");
                     String[] pluses = program.getPluses().split("\\R");
+                    String[] systems = program.getSystems().split(" ");
                     return new FullProdDTO(program.getName(), program.getLink(), program.getDescription(), program.getSystems(), minuses, pluses, program.getSite());
                 })
                 .filter(program -> program.getName().toLowerCase().contains(decodedName.toLowerCase()))
