@@ -4,6 +4,22 @@ public class FullProdDTO {
 
     private String name;
 
+    public void setExamples(String[] examples) {
+        this.examples = examples;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String[] getExamples() {
+        return examples;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
     public FullProdDTO(String name, String link, String description, String[] systems, String[] pluses, String[] minuses, String site, String logo, String[] examples) {
         this.name = name;
         this.link = link;
