@@ -34,8 +34,10 @@ public class ProgramService {
         this.usersRepo = usersRepo;
     }
 
-    public Iterable<Programs> getAllPrograms() {
-        return programsRepo.findAll();
+    public Iterable<?> getAllPrograms() {
+        return StreamSupport.stream(programsRepo.findAll().spliterator(), false)
+                .map(this::normalizeOutput)
+                .toList();
     }
 
     public List<Map<String, Object>> getAllLikedPrograms(HttpServletRequest request) {
