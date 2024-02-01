@@ -2,6 +2,7 @@ package User;
 
 import Brush.BrushRepo;
 import Brush.Brushes;
+import Program.FullProdDTO;
 import Program.Programs;
 import Program.ProgramsRepo;
 import Reference.References;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -46,14 +48,20 @@ public class UserService {
         return brushes;
     }
 
-    public List<Programs> getUsersPrograms(HttpServletRequest request) {
+    public List<?> getUsersPrograms(HttpServletRequest request) {
         Users user = getUser(request);
         List<Integer> programsIDS = user.getProgramsList();
         List<Programs> programs = new ArrayList<>();
         for (Integer id : programsIDS) {
             programs.add(programsRepo.findById(id).get());
         }
-        return programs;
+        return programs.stream().map(program -> {
+            String[] minuses = program.getMinuses().split("\\R");
+            String[] pluses = program.getPluses().split("\\R");
+            String[] systems = program.getSystems().split(" ");
+            String[] examples = program.getExamples().split(" ");
+            return new FullProdDTO(program.getName(), program.getLink(), program.getDescription(), systems, minuses, pluses, program.getSite(), program.getLogo(), examples);
+        }).collect(Collectors.toList());
     }
 
     public List<Tutorials> getUsersTutorials(HttpServletRequest request) {
